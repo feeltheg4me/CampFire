@@ -1,0 +1,11 @@
+<form [formGroup]="task">
+    Title :<br>
+    <input formControlName="title" /><br> Date debut: <br>
+    <input type="date" formControlName="dateD" /><br> Date fin: <br>
+    <input type="date" formControlName="dateF" /><br>
+
+    <div *ngIf="getError()">
+        Date fin doit etre superieur a date debut
+    </div>
+    <input type="submit" value="Add" [disabled]="getError()" (click)="addTask()" />
+</form>

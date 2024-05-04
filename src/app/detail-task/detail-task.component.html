@@ -1,0 +1,13 @@
+<p>detail-task works!</p>
+<ul>
+    <li>{{task.id}}</li>
+    <li>{{task.title}}</li>
+    <li>{{task.dateD}}</li>
+    <li>{{task.dateF}}</li>
+    <li>{{task.status}}</li>
+    <li>{{task.project.title}}</li>
+    
+    
+    </ul>
+    <input [formControl]="status" />
+    <button (click)="updateTask()">Change Status</button>

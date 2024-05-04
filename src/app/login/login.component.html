@@ -1,0 +1,16 @@
+<form [formGroup]="login">
+    Nom utilisateur :<br>
+    <input formControlName="username" /><br>
+    <div *ngIf="username!.invalid && username!.touched">
+        <div *ngIf="username!.errors!['required']">User name is required</div>
+        <div *ngIf="username!.errors!['minlength']">User name must have at least 3 characters</div>
+    </div>
+    Mot de passe : <br>
+    <input formControlName="password" /><br>
+    <div *ngIf="password!.invalid && password!.touched">
+        <div *ngIf="password!.errors!['required']">password is required</div>
+        <div *ngIf="password!.errors!['minlength']">password must have at least 6 characters</div>
+        <div *ngIf="password!.errors!['pattern']">password must start with UpperCase</div>
+    </div>
+    <input type="submit" value="Se connecter" (click)="VersProjects()" [disabled]="login.invalid" />
+</form>

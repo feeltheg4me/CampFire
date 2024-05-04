@@ -1,0 +1,20 @@
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Date Debut</th>
+        <th>Date Fin</th>
+        <th>Status</th>
+        <th>Project</th>
+    </tr>
+    <tr *ngFor="let p of listTasks">
+        <td>{{p.id}}</td>
+        <td>{{p.title}}</td>
+        <td>{{p.dateD}}</td>
+        <td>{{p.dateF}}</td>
+        <td>{{p.status}}</td>
+        <td>{{p.project.title}}</td>
+        <td><a [routerLink]="['/details/',p.id]">Details</a></td>
+    </tr>
+</table>
+<button (click)="calculTasks()">Calculer</button> {{nbTasks}}
