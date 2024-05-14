@@ -2,7 +2,10 @@ const http = require("http");
 const express = require("express");
 const path = require("path")
 const evenement = require("./Routes/evenement.js");
-const{add} = require("./Controller/evenement.js");
+const{add1} = require("./Controller/evenement.js");
+
+const user = require("./Routes/userRoute.js");
+const{add2} = require("./Controller/userController.js");
 
 var mongo=require('mongoose');  //création data base mongodb
 var mongoconnect=require("./config/dbConnection.json");   //l'emplacement de fichiers
@@ -20,6 +23,7 @@ var app = express();
 app.use(bodyParser.urlencoded({extended: true }));
 app.use(bodyParser.json());
 app.use("/evenement",evenement);
+app.use("/user",user);
 const server = http.createServer(app);
 
 
