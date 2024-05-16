@@ -9,6 +9,7 @@ const{add1} = require("./Controller/evenement.js");
 
 const user = require("./Routes/userRoute.js");
 const auth = require("./Routes/auth.routes.js");
+
 const{add2} = require("./Controller/userController.js");
 
 
@@ -96,5 +97,4 @@ function initial() {
     }
   });
 }
-
 

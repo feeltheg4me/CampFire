@@ -1,6 +1,5 @@
 var User = require("../Model/user")
 
-
 // async function add(req, res, next) {
 //   try{
 //   const user= new User(req.body);
