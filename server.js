@@ -53,6 +53,7 @@ var app = express();
 app.use(bodyParser.urlencoded({extended: true }));
 app.use(bodyParser.json());
 app.use("/annonceOffre",annonceOffre);
+
 app.use("/evenement",evenement);
 app.use("/reclamation",reclamation);
 app.use("/user",user);
