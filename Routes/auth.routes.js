@@ -1,23 +1,29 @@
-const { verifySignUp } = require("../Mid");
-const controller = require("../Controller/auth.controller");
+const express = require('express');
+const { verifySignUp } = require('../Mid');
+const controller = require('../Controller/auth.controller');
 
-module.exports = function(app) {
-  app.use(function(req, res, next) {
-    res.header(
-      "Access-Control-Allow-Headers",
-      "x-access-token, Origin, Content-Type, Accept"
-    );
-    next();
-  });
+const router = express.Router();
 
-  app.post(
-    "/api/auth/signup",
-    [
-      verifySignUp.checkDuplicateUsernameOrEmail,
-      verifySignUp.checkRolesExisted
-    ],
-    controller.signup
+// Set headers for CORS
+router.use((req, res, next) => {
+  res.header(
+    'Access-Control-Allow-Headers',
+    'x-access-token, Origin, Content-Type, Accept'
   );
+  next();
+});
 
-  app.post("/api/auth/signin", controller.signin);
-};
+// Signup route
+router.post(
+  '/signup',
+  [
+    verifySignUp.checkDuplicateUsernameOrEmail,
+    verifySignUp.checkRolesExisted
+  ],
+  controller.signup
+);
+
+// Signin route
+router.post('/signin', controller.signin);
+
+module.exports = router;
