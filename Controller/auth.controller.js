@@ -35,7 +35,8 @@ exports.signup = async (req, res) => {
 
 exports.signin = async (req, res) => {
   try {
-    const user = await User.findOne({ username: req.body.username }).populate("roles", "-__v");
+    const user = await User.findOne({ username: req.body.username }).populate("roles", "-__v") 
+                                                                    .populate("following", "username fullname");;
     if (!user) {
       return res.status(404).send({ message: "User Not found." });
     }
@@ -56,7 +57,11 @@ exports.signin = async (req, res) => {
     res.status(200).send({
       id: user._id,
       username: user.username,
+      fullname : user.fullname,
+      bio : user.bio,
+      profilePicture : user.profilePicture,
       email: user.email,
+      following: user.following, 
       roles: authorities,
       accessToken: token
     });

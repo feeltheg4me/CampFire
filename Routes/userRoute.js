@@ -11,12 +11,16 @@ router.use(function(req, res, next) {
   next();
 });
 
-router.get("/test/all", controller.allAccess);
+router.get("/api/test/all", controller.allAccess);
 
-router.get("/test/acheteur", [authJwt.verifyToken, authJwt.isAcheteur], controller.acheteurBoard);
+router.get("/api/test/acheteur", [authJwt.verifyToken, authJwt.isAcheteur], controller.acheteurBoard);
 
-router.get("/test/vendeur", [authJwt.verifyToken, authJwt.isVendeur],controller.vendeurBoard);
+router.get("/api/test/vendeur", [authJwt.verifyToken, authJwt.isVendeur],controller.vendeurBoard);
 
-router.get("/test/admin",[authJwt.verifyToken, authJwt.isAdmin],controller.adminBoard);
+router.get("/api/test/admin",[authJwt.verifyToken, authJwt.isAdmin],controller.adminBoard);
+
+router.put("/api/user/:userId/updateprofile", [authJwt.verifyToken], controller.updateProfile);
+
+router.post("/api/user/follow", [authJwt.verifyToken], controller.followUser);
 
 module.exports = router;
