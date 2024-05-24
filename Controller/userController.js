@@ -8,9 +8,9 @@ exports.allAccess = async (req, res) => {
   }
 };
 
-exports.userBoard = async (req, res) => {
+exports.acheteurBoard = async (req, res) => {
   try {
-    res.status(200).send("User Content.");
+    res.status(200).send("Acheteur Content.");
   } catch (error) {
     res.status(500).send({ message: error.message });
   }
@@ -24,9 +24,9 @@ exports.adminBoard = async (req, res) => {
   }
 };
 
-exports.moderatorBoard = async (req, res) => {
+exports.vendeurBoard = async (req, res) => {
   try {
-    res.status(200).send("Moderator Content.");
+    res.status(200).send("Vendeur Content.");
   } catch (error) {
     res.status(500).send({ message: error.message });
   }

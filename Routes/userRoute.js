@@ -13,15 +13,10 @@ router.use(function(req, res, next) {
 
 router.get("/test/all", controller.allAccess);
 
-router.get("/test/user", [authJwt.verifyToken], controller.userBoard);
+router.get("/test/acheteur", [authJwt.verifyToken, authJwt.isAcheteur], controller.acheteurBoard);
 
+router.get("/test/vendeur", [authJwt.verifyToken, authJwt.isVendeur],controller.vendeurBoard);
 
-router.get("/test/mod", [authJwt.verifyToken, authJwt.isVendeur],controller.moderatorBoard);
-
-router.get(
-  "/test/admin",
-  [authJwt.verifyToken, authJwt.isAdmin],
-  controller.adminBoard
-);
+router.get("/test/admin",[authJwt.verifyToken, authJwt.isAdmin],controller.adminBoard);
 
 module.exports = router;
