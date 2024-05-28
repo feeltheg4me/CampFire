@@ -1,6 +1,7 @@
 const express = require('express');
 const { verifySignUp } = require('../Mid');
 const controller = require('../Controller/auth.controller');
+const passport = require('passport');
 
 const router = express.Router();
 
@@ -25,5 +26,15 @@ router.post(
 
 // Signin route
 router.post('/signin', controller.signin);
+
+// Google OAuth routes
+router.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
+
+router.get('/google/callback', passport.authenticate('google', {
+  failureRedirect: '/login',
+  session: false
+}), controller.googleAuthCallback);
+
+router.get('/logout', controller.logout);
 
 module.exports = router;

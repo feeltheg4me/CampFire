@@ -5,6 +5,12 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const dbConfig = require('./config/dbConnection.json');
 const Role = require('./Model/role');
+const passport = require('passport');
+const session = require('express-session');
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
+require('./config/passport');
+
+
 
 // Import routes
 const evenementRoutes = require('./Routes/evenement.js');
@@ -12,8 +18,20 @@ const userRoutes = require('./Routes/userRoute.js');
 const authRoutes = require('./Routes/auth.routes.js');
 const annonceOffreRoutes = require('./Routes/annonceOffre.js');
 const reclamationRoutes = require('./Routes/reclamation.js');
+require('./config/passport');
 
 const app = express();
+
+//Oauth google
+app.use(session({
+  secret: 'your_secret_key',
+  resave: false,
+  saveUninitialized: true
+}));
+
+// Initialize Passport and use sessions
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Middleware
 app.use(cors());
