@@ -4,8 +4,10 @@ const schema= mongo.Schema;
 const produit =new schema({
     idProduit :Number,
     nomProduit :String,
-    description :String,
-    prix :Number,
-    image :String
+    descriptionProduit :String,
+    prixProduit :Number,
+    imageProduit :String,
+    categorieProduit:String
+   
     });
 module.exports= mongo.model("produit",produit);
