@@ -35,6 +35,23 @@ router.get('/google/callback', passport.authenticate('google', {
   session: false
 }), controller.googleAuthCallback);
 
+router.get('/', function(req,res){
+  if(req.isAuthenticated())
+    {
+      res.render("welcome",{username:req.user.username});
+    }
+    else
+    {
+  res.render("home");
+    }
+
+});
+router.get('/welcome', function(req,res){
+  if(req.isAuthenticated())
+    {
+      res.render("welcome",{username:req.user.username});
+    }
+});
 router.get('/logout', controller.logout);
 
 module.exports = router;
