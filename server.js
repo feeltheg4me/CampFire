@@ -7,10 +7,9 @@ const dbConfig = require('./config/dbConnection.json');
 const Role = require('./Model/role');
 const passport = require('passport');
 const session = require('express-session');
-const GoogleStrategy = require('passport-google-oauth20').Strategy;
 require('./config/passport');
-
-
+const path = require('path');
+require('dotenv').config(); 
 
 // Import routes
 const evenementRoutes = require('./Routes/evenement.js');
@@ -24,7 +23,7 @@ const app = express();
 
 //Oauth google
 app.use(session({
-  secret: 'your_secret_key',
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true
 }));
@@ -37,6 +36,11 @@ app.use(passport.session());
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+// Serve static files from the 'frontend' directory
+app.use(express.static(path.join(__dirname, 'FrontEnd/assets')));
+app.use(express.static(path.join(__dirname, 'FrontEnd/Views')));
+app.use(express.static(path.join(__dirname, 'FrontEnd', 'assets')));
 
 // Register routes
 app.use('/annonceOffre', annonceOffreRoutes);

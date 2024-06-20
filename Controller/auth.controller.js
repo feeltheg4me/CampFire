@@ -72,12 +72,13 @@ exports.signin = async (req, res) => {
 
 exports.googleAuthCallback = (req, res) => {
   // Successful authentication, generate token and send to client
-  const token = jwt.sign({ id: req.user.id }, process.env.SECRET_KEY, {
+  const token = jwt.sign({ id: req.user.id }, config.secret, {
     algorithm: 'HS256',
     allowInsecureKeySizes: true,
     expiresIn: 86400 // 24 hours
   });
-  res.status(200).send({ accessToken: token });
+  res.redirect(`/instructor-dashboard.html?token=${token}`);
+  //res.status(200).send({ accessToken: token });
 };
 
 exports.logout = (req, res) => {
