@@ -1,0 +1,105 @@
+<div class="row"  style="margin-left: 20px;margin-bottom: 20px" >
+  <div class="col-md-6 d-flex" style="margin-top: 30px;margin-bottom: 20px" >
+    <div class="card instructor-card w-100">
+      <div class="card-body">
+        <div class="instructor-inner">
+          <h6> NOMBRE DE RECLAMATION CE JOUR</h6>
+          <h4 class="instructor-text-success"  style="color: cornflowerblue ">
+            <strong>
+              {{ nbrDeReclamationCeJour}}
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-circle-fill" viewBox="0 0 16 16">
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4m.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2"/>
+              </svg>
+            </strong></h4>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 d-flex" style="margin-top: 30px;margin-bottom: 20px" >
+    <div class="card instructor-card w-100">
+      <div class="card-body">
+        <div class="instructor-inner">
+          <h6>NOMBRE DE RECLAMATION EN ATTENTE  AU MOIN DEPUIS 3JOURS </h6>
+          <h4 class="instructor-text-success"  style="color: orange ">
+            <strong>
+              {{ reclamationsExceeding3DaysPending}}
+
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hourglass-split" viewBox="0 0 16 16">
+                <path d="M2.5 15a.5.5 0 1 1 0-1h1v-1a4.5 4.5 0 0 1 2.557-4.06c.29-.139.443-.377.443-.59v-.7c0-.213-.154-.451-.443-.59A4.5 4.5 0 0 1 3.5 3V2h-1a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-1v1a4.5 4.5 0 0 1-2.557 4.06c-.29.139-.443.377-.443.59v.7c0 .213.154.451.443.59A4.5 4.5 0 0 1 12.5 13v1h1a.5.5 0 0 1 0 1zm2-13v1c0 .537.12 1.045.337 1.5h6.326c.216-.455.337-.963.337-1.5V2zm3 6.35c0 .701-.478 1.236-1.011 1.492A3.5 3.5 0 0 0 4.5 13s.866-1.299 3-1.48zm1 0v3.17c2.134.181 3 1.48 3 1.48a3.5 3.5 0 0 0-1.989-3.158C8.978 9.586 8.5 9.052 8.5 8.351z"/>
+              </svg>
+            </strong></h4>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 d-flex" style="margin-bottom: 20px">
+    <div class="card instructor-card w-100">
+      <div class="card-body">
+        <div class="instructor-inner">
+          <h6> NOMBRE DE RECLAMATION PAR ETAT  </h6>
+          <div style="max-width: 500px; max-height: 300px;">
+            <canvas baseChart
+                    [data]="pieChartData"
+                    [labels]="pieChartLabels"
+                    [chartType]="pieChartType"
+                    [options]="pieChartOptions"
+                    [colors]="pieChartColors">
+            </canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-md-6 d-flex"style="margin-bottom: 20px">
+    <div class="card instructor-card w-100" >
+      <div class="card-body">
+        <div class="instructor-inner">
+          <h6>LES TOP 5 UTILISATEUR AVEC PLUS DE RECLAMATIONS</h6>
+          <div style="
+max-width: 500px;
+max-height: 250px;;
+">
+
+            <canvas baseChart
+                    [datasets]="barChartDatareclamationbyuser"
+                    [labels]="barChartLabelsreclamationbyuser"
+                    [options]="barChartOptions"
+                    [legend]="barChartLegendreclamationbyuser"
+                    [chartType]="barChartTypereclamationbyuser"
+                    [colors]="top5userreclamedcolors">
+            </canvas></div></div>  </div>  </div>
+
+
+
+
+
+  </div>
+
+  <div class="col-md-12 d-flex" style="margin-bottom: 20px" >
+    <div class="card instructor-card w-100" >
+      <div class="card-body">
+        <div class="instructor-inner">
+          <h6>NOMBRE DE RECLAMATION PAR MOIS</h6>
+          <div style="
+max-width: 500px;
+max-height: 250px;;
+">
+
+
+            <canvas baseChart
+                    [datasets]="areaChartData"
+                    [labels]="areaChartLabels"
+                    [chartType]="areaChartType"
+                    [legend]="areaChartLegend"
+                    [options]="areaChartOptions"
+                    [colors]="areaChartColors">
+            </canvas>
+          </div>
+        </div></div>
+    </div>
+  </div>
+</div>

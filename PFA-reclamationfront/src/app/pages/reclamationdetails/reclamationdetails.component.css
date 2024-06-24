@@ -1,0 +1,13 @@
+.containersa{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 20px;
+  margin: 0 auto;
+  max-width: 1000px;
+
+  background-color: white; /* Fallback background color */
+  border-radius: 8px;
+}
+
+.marginbox{margin-top: 100px; }

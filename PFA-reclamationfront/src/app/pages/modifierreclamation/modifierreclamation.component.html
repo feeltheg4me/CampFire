@@ -1,0 +1,45 @@
+<div style="min-width: 500px">
+<h2 mat-dialog-title>Modifier Reclamation</h2>
+<div mat-dialog-content>
+  <form [formGroup]="reclamationForm" (ngSubmit)="onSubmit()">
+    <div class="alert alert-danger" role="alert" *ngIf="error">
+      <div class="error-message">{{ error }}</div>
+    </div>
+    <div >
+      <mat-form-field class="custom-input-width">
+        <mat-label>Title</mat-label>
+        <input type="text" matInput
+               formControlName="titre" type="text" placeholder="Entrer le titre" >
+        <mat-hint>Errors appear instantly!</mat-hint>
+
+        <mat-error *ngIf="reclamationForm.get('titre')?.errors && reclamationForm.get('titre')?.touched" class="p-error">titre
+          <strong>required</strong>
+        </mat-error>
+
+
+      </mat-form-field>
+
+    </div>
+    <div >
+      <mat-form-field class="custom-input-width">
+        <mat-label>Description</mat-label>
+        <textarea matInput id="description" formControlName="description" placeholder="Enter description"  ></textarea>
+        <mat-hint>Errors appear instantly!</mat-hint>
+
+        <mat-error *ngIf="reclamationForm.get('description')?.errors && reclamationForm.get('description')?.touched" class="p-error">Description
+          <strong>required</strong>
+        </mat-error>
+
+
+      </mat-form-field>
+
+    </div>
+
+    <button type="submit" mat-raised-button color="primary" [disabled]="!reclamationForm.valid">Update</button>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <!-- Additional action buttons if needed -->
+</div>
+</div>

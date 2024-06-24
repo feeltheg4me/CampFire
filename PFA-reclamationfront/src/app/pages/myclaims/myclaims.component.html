@@ -1,0 +1,56 @@
+<div class="claim-box">
+  <div *ngIf="reclamations && reclamations.length > 0; else emptyMessage">
+
+    <div class="containerfiltersearch">
+      <div class="input-block select-form mb-1">
+        <select class="form-select select" [(ngModel)]="selectedStatus" (change)="filterReclamations()">
+          <option value="">All</option>
+          <option value="en attente">En attente</option>
+          <option value="traiter">traiter</option>
+          <option value="refuser">refuser</option>
+        </select>
+      </div>
+      <div class="card search-widget blog-search blog-widget">
+        <div class="card-body">
+          <form (submit)="searchReclamations()" class="search-form">
+            <div class="input-group">
+              <input type="text" [(ngModel)]="searchKeyword" name="keyword" placeholder="Search..." class="form-control">
+              <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+    <div *ngFor="let u of  paginatedReclamations" class="claim-item">
+      <div class="content">
+
+        <div class="text-content">
+          <div class="instructor-detail">
+            <h5><a href="instructor-profile.html">{{u.titre }}</a></h5>
+            <p>{{ u.status }}</p>
+          </div>
+          <p class="rev-info">{{ u.description }}</p>
+        </div>
+
+          <img  style="height: 150px ; width:200px" [src]="'http://localhost:3000/' + u.picture" alt="Image de réclamation">
+
+      </div>
+
+      <button mat-raised-button color="warn"   (click)="Ondeletereclamation(u.idReclamation)" *ngIf="u.status == 'en attente'">Annuler</button>
+
+      <button mat-raised-button color="primary" *ngIf="u.status == 'en attente'" (click)="openDialog(u)">modifier</button>
+
+      <hr> <!-- Horizontal line -->
+    </div>
+    <mat-paginator [length]="filteredReclamations.length"
+                   [pageSize]="4"
+                   [pageSizeOptions]="[2,4, 8, 12]"
+                   (page)="handlePageEvent($event)">
+    </mat-paginator>
+  </div>
+  <ng-template #emptyMessage>
+    <p>No reclamations found.</p>
+  </ng-template>
+</div>

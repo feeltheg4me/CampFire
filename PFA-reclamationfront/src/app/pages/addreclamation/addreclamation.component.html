@@ -1,0 +1,91 @@
+<header>
+  <h1>Claim</h1>
+  <nav>
+    <a href="#">Home</a> / <a href="#">Claim</a>
+  </nav>
+</header>
+<br>
+<div class="contact-page-container">
+
+  <div class="contact-info">
+    <h2>Get in Touch</h2>
+    <p>Your feedback is valuable to us. Please provide details of your concern in the form below so we can address it promptly</p>
+    <div class="info-box">
+
+      <div class="info-item">
+        <i class="fas fa-phone"></i>
+        <p>+96360730 claim@info.com</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-form">
+
+    <form [formGroup]="reclamationForm" (ngSubmit)="onSubmit()">
+      <div class="alert alert-primary" role="alert" *ngIf="message">
+        <div class="success-message">{{ message }}</div>
+      </div>
+
+      <div class="alert alert-danger" role="alert" *ngIf="error">
+        <div class="error-message">{{ error }}</div>
+      </div>
+      <div >
+        <mat-form-field class="custom-input-width">
+          <mat-label>Title</mat-label>
+          <input type="text" matInput
+                 formControlName="titre" type="text" placeholder="Entrer le titre">
+          <mat-hint>Errors appear instantly!</mat-hint>
+
+          <mat-error *ngIf="reclamationForm.get('titre')?.errors && reclamationForm.get('titre')?.touched" class="p-error">titre
+           <strong>required</strong>
+          </mat-error>
+
+
+        </mat-form-field>
+
+      </div>
+      <div >
+        <mat-form-field class="custom-input-width">
+          <mat-label>Description</mat-label>
+          <textarea matInput id="description" formControlName="description" placeholder="Enter description"></textarea>
+          <mat-hint>Errors appear instantly!</mat-hint>
+
+          <mat-error *ngIf="reclamationForm.get('description')?.errors && reclamationForm.get('description')?.touched" class="p-error">Description
+            <strong>required</strong>
+          </mat-error>
+
+
+        </mat-form-field>
+
+      </div>
+      <div>
+        <mat-form-field class="custom-input-width">
+          <mat-label>Number of Commands</mat-label>
+          <input type="number" matInput formControlName="nbreCommande" placeholder="Enter the number of commands">
+          <mat-hint>Errors appear instantly!</mat-hint>
+
+          <mat-error *ngIf="reclamationForm.get('nbreCommande')?.errors && reclamationForm.get('nbreCommande')?.touched" class="p-error">Number of Commands
+            <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+
+      <div class="input-block" >
+        <label class="add-course-label" for="picture" style=" color: #392c7c">Choose image</label>
+        <input type="file" class="form-control" id="picture"  name="picture"(change)="onFileSelected($event)"
+               formControlName="picture"   accept="image/*">
+        <img *ngIf="imageUrl" [src]="imageUrl" class="image-preview" />
+        <mat-error *ngIf="reclamationForm.get('picture')?.errors && reclamationForm.get('picture')?.touched" class="p-error"> Picture
+          <strong>required</strong>
+        </mat-error>
+
+      </div>
+
+
+
+      <button type="submit" pButton label="Submit" [disabled]="!reclamationForm.valid">Add</button>
+    </form>
+  </div>
+
+</div>

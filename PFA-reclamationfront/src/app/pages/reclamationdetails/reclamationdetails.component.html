@@ -1,0 +1,45 @@
+<div class="container-xxl flex-grow-1 container-p-y">
+  <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Reclamations/</span>Details</h4>
+
+
+
+<div class="containersa">
+
+  <div class="row">
+    <div class="col-md-5">
+      <div class="project-info-box mt-0">
+        <h2 style=" color: #392c7c">Reclamation Details</h2>
+
+
+        <p style="  max-width: 100%; word-wrap: break-word;"><strong style=" color: #392c7c">Titre:</strong> {{reclamation.titre}}</p>
+        <p><strong style=" color: #392c7c">Description:</strong></p>
+        <p class="mb-0" style="  max-width: 100%; word-wrap: break-word;"> {{reclamation.description}}</p>
+      </div><!-- / project-info-box -->
+
+      <div class="project-info-box">
+        <p><b style=" color: #392c7c"> idUtilisateur:</b> {{reclamation.idUtilisateur}}</p>
+        <p><strong style=" color: #392c7c">ID Reclamation:</strong> {{reclamation.idReclamation}}</p>
+        <p><strong style=" color: #392c7c">Nombre de Commande:</strong> {{reclamation.nbreCommande}}</p>
+      </div><!-- / project-info-box -->
+
+
+    </div><!-- / column -->
+
+    <div class="col-md-7">
+      <img [src]="'http://localhost:3000/' + reclamation.picture" alt="project-image" class="rounded" style="max-height: 800px ;max-width: 500px">
+      <div class="project-info-box">
+
+        <p><b style=" color: #392c7c">Status:</b> {{reclamation.status}}</p>
+        <p><b style=" color: #392c7c">Date:</b>  {{reclamation.date}}</p>
+      </div><!-- / project-info-box -->
+    </div>
+    <a
+      routerLink="/admin/reclamations" class="menu-link">
+      <i class="menu-icon tf-icons bx bx-arrow-back"></i>
+      <div data-i18n="Analytics"> Reclamations</div>
+    </a>
+  </div>
+
+</div>
+
+</div>
